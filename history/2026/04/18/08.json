@@ -1,0 +1,38 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": false,
+        "error": "REPORIUM_APP_TOKEN not set; skipping",
+        "probe": "what is a vector database"
+      },
+      {
+        "completed": false,
+        "error": "REPORIUM_APP_TOKEN not set; skipping",
+        "probe": "react alternatives for state management"
+      },
+      {
+        "completed": false,
+        "error": "REPORIUM_APP_TOKEN not set; skipping",
+        "probe": "python web framework for async apps"
+      }
+    ],
+    "ts": "2026-04-18T08:36:29.865534+00:00"
+  },
+  "health": {
+    "api_health_status": 200,
+    "api_health_ttfb_ms": 138,
+    "home_status": 200,
+    "home_ttfb_ms": 334,
+    "ts": "2026-04-18T08:36:29.702211+00:00"
+  },
+  "score": {
+    "composite": 70.0,
+    "error_rate": 1.0,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 1.0,
+    "reliability": 0.0
+  },
+  "ts": "2026-04-18T08:36:29.918979+00:00"
+}
