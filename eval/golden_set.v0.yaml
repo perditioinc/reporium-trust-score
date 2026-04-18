@@ -1,0 +1,318 @@
+# Reporium Retrieval Quality Golden Set — v0 DRAFT
+#
+# Status: DRAFT, not wired into hourly.yml yet.
+# Review doc: ../../CONFLUENCE_REPORIUM_GOLDEN_EVAL_SET_V0.md (platform root)
+# Owner: Kim Loza
+# Purpose: each query, when submitted to /intelligence/ask/stream, should return
+#          at least one source whose category matches expected_categories in top-5.
+#
+# Schema:
+#   - id: string (stable identifier)
+#     query: string (submitted verbatim)
+#     expected_categories: [list of taxonomy slugs — one match in top-5 = pass]
+#     expected_repos_hint: [optional — for tightened eval later]
+#     tags: [metadata — intent_type, difficulty, ...]
+#
+# Phase 6 will implement the runner in eval/run_golden.py. Until then, this file
+# is the source of truth for the set. Edit here.
+
+version: 0
+status: draft
+created: 2026-04-18
+
+meta:
+  intent_types: [technology_lookup, framework_library, use_case, comparison, feature, trend, long_tail]
+  size: 50
+  license_note: queries are original; no copyrighted source material reproduced
+
+queries:
+  - id: q001
+    query: "vector database alternatives to pinecone"
+    expected_categories: [embeddings, vector_search, infrastructure]
+    expected_repos_hint: [weaviate, qdrant, milvus, chroma, pgvector]
+    tags: [technology_lookup, easy]
+
+  - id: q002
+    query: "graph database for knowledge graphs"
+    expected_categories: [graph_db, knowledge_graph]
+    expected_repos_hint: [neo4j, dgraph, memgraph, arangodb]
+    tags: [technology_lookup, medium]
+
+  - id: q003
+    query: "time series database for observability"
+    expected_categories: [time_series_db, observability, infrastructure]
+    expected_repos_hint: [prometheus, influxdb, victoriametrics, timescaledb]
+    tags: [technology_lookup, easy]
+
+  - id: q004
+    query: "message queue alternatives to kafka"
+    expected_categories: [messaging, infrastructure]
+    expected_repos_hint: [rabbitmq, nats, pulsar, redpanda]
+    tags: [technology_lookup, easy]
+
+  - id: q005
+    query: "object storage on-prem alternative to s3"
+    expected_categories: [storage, infrastructure]
+    expected_repos_hint: [minio, ceph, garage]
+    tags: [technology_lookup, easy]
+
+  - id: q006
+    query: "lightweight kubernetes distribution"
+    expected_categories: [kubernetes, infrastructure]
+    expected_repos_hint: [k3s, kind, minikube, microk8s]
+    tags: [technology_lookup, easy]
+
+  - id: q007
+    query: "embedded SQL database for mobile"
+    expected_categories: [embedded_db, mobile]
+    expected_repos_hint: [sqlite, duckdb, libsql]
+    tags: [technology_lookup, medium]
+
+  - id: q008
+    query: "caching layer alternatives to redis"
+    expected_categories: [cache, infrastructure]
+    expected_repos_hint: [memcached, dragonfly, keydb, valkey]
+    tags: [technology_lookup, easy]
+
+  - id: q009
+    query: "self-hosted feature flags"
+    expected_categories: [feature_flags, infrastructure]
+    expected_repos_hint: [unleash, flagsmith, openfeature]
+    tags: [technology_lookup, medium]
+
+  - id: q010
+    query: "open source api gateway"
+    expected_categories: [api_gateway, infrastructure]
+    expected_repos_hint: [kong, traefik, tyk, krakend]
+    tags: [technology_lookup, easy]
+
+  - id: q011
+    query: "python async web framework"
+    expected_categories: [python, web_framework, backend]
+    expected_repos_hint: [fastapi, starlette, quart, sanic, litestar]
+    tags: [framework_library, easy]
+
+  - id: q012
+    query: "typescript ai agent framework"
+    expected_categories: [typescript, ai_agents, llm_frameworks]
+    expected_repos_hint: [mastra, ai-sdk, langchain-js, langgraph-js]
+    tags: [framework_library, medium]
+
+  - id: q013
+    query: "react alternatives for state management"
+    expected_categories: [react, state_management, frontend]
+    expected_repos_hint: [zustand, jotai, valtio, redux, mobx]
+    tags: [framework_library, easy]
+
+  - id: q014
+    query: "go http router comparison"
+    expected_categories: [golang, web_framework, backend]
+    expected_repos_hint: [chi, gin, fiber, echo]
+    tags: [framework_library, easy]
+
+  - id: q015
+    query: "rust web server framework"
+    expected_categories: [rust, web_framework, backend]
+    expected_repos_hint: [axum, actix-web, rocket, warp]
+    tags: [framework_library, easy]
+
+  - id: q016
+    query: "unified ORM across multiple databases"
+    expected_categories: [orm, database, backend]
+    expected_repos_hint: [prisma, drizzle, sqlalchemy, kysely]
+    tags: [framework_library, medium]
+
+  - id: q017
+    query: "python data validation library"
+    expected_categories: [python, validation, developer_tooling]
+    expected_repos_hint: [pydantic, marshmallow, attrs, msgspec]
+    tags: [framework_library, easy]
+
+  - id: q018
+    query: "frontend build tool faster than webpack"
+    expected_categories: [build_tools, frontend, developer_tooling]
+    expected_repos_hint: [vite, turbopack, esbuild, rspack]
+    tags: [framework_library, easy]
+
+  - id: q019
+    query: "testing library for react components"
+    expected_categories: [testing, react, frontend]
+    expected_repos_hint: [testing-library, playwright, vitest, cypress]
+    tags: [framework_library, easy]
+
+  - id: q020
+    query: "python task queue framework"
+    expected_categories: [python, task_queue, backend]
+    expected_repos_hint: [celery, rq, dramatiq, huey]
+    tags: [framework_library, easy]
+
+  - id: q021
+    query: "image classification starter project"
+    expected_categories: [computer_vision, ml_training, python]
+    expected_repos_hint: [timm, torchvision, yolov8]
+    tags: [use_case, medium]
+
+  - id: q022
+    query: "document chunking strategies for rag"
+    expected_categories: [rag, llm_frameworks, embeddings]
+    expected_repos_hint: [langchain, llamaindex, haystack, unstructured]
+    tags: [use_case, medium]
+
+  - id: q023
+    query: "speech to text open source"
+    expected_categories: [speech_recognition, audio, ml_inference]
+    expected_repos_hint: [whisper, whisper-cpp, vosk, deepspeech]
+    tags: [use_case, easy]
+
+  - id: q024
+    query: "code search across private repos"
+    expected_categories: [code_search, developer_tooling]
+    expected_repos_hint: [sourcegraph, grep-app, hound]
+    tags: [use_case, medium]
+
+  - id: q025
+    query: "pdf data extraction python"
+    expected_categories: [document_processing, python, pdf]
+    expected_repos_hint: [pypdf, pdfplumber, unstructured, pdfminer]
+    tags: [use_case, medium]
+
+  - id: q026
+    query: "pipeline orchestration for ml"
+    expected_categories: [mlops, orchestration, data_engineering]
+    expected_repos_hint: [airflow, dagster, prefect, kubeflow, flyte]
+    tags: [use_case, medium]
+
+  - id: q027
+    query: "fraud detection dataset baselines"
+    expected_categories: [fintech, ml_training, datasets]
+    tags: [use_case, hard]
+
+  - id: q028
+    query: "realtime collaboration crdt library"
+    expected_categories: [crdt, realtime, frontend]
+    expected_repos_hint: [yjs, automerge, liveblocks]
+    tags: [use_case, medium]
+
+  - id: q029
+    query: "langchain vs llamaindex"
+    expected_categories: [llm_frameworks, rag, python]
+    expected_repos_hint: [langchain, llamaindex, haystack]
+    tags: [comparison, easy]
+
+  - id: q030
+    query: "nextjs vs remix app router"
+    expected_categories: [react, web_framework, frontend]
+    expected_repos_hint: [next.js, remix, react-router]
+    tags: [comparison, easy]
+
+  - id: q031
+    query: "postgres vs mysql for new app"
+    expected_categories: [rdbms, database, backend]
+    expected_repos_hint: [postgres, mysql, mariadb]
+    tags: [comparison, easy]
+
+  - id: q032
+    query: "tailwind vs vanilla css in large projects"
+    expected_categories: [css, frontend, styling]
+    expected_repos_hint: [tailwindcss, unocss, panda-css, stitches]
+    tags: [comparison, easy]
+
+  - id: q033
+    query: "bun vs deno vs node"
+    expected_categories: [javascript_runtime, backend, developer_tooling]
+    expected_repos_hint: [bun, deno, node]
+    tags: [comparison, easy]
+
+  - id: q034
+    query: "ollama vs vllm for local llm serving"
+    expected_categories: [llm_inference, ml_serving]
+    expected_repos_hint: [ollama, vllm, llama.cpp, lmstudio]
+    tags: [comparison, medium]
+
+  - id: q035
+    query: "sveltekit vs nuxt vs next"
+    expected_categories: [web_framework, frontend, meta_framework]
+    tags: [comparison, easy]
+
+  - id: q036
+    query: "postgres full-text search with ranking"
+    expected_categories: [postgres, full_text_search, database]
+    expected_repos_hint: [paradedb, zombodb, pg_search]
+    tags: [feature, medium]
+
+  - id: q037
+    query: "typescript decorator metadata runtime"
+    expected_categories: [typescript, language_features]
+    expected_repos_hint: [reflect-metadata, typia]
+    tags: [feature, hard]
+
+  - id: q038
+    query: "http middleware chain patterns"
+    expected_categories: [web_framework, backend]
+    tags: [feature, medium]
+
+  - id: q039
+    query: "jsx parser library"
+    expected_categories: [parser, frontend, compiler]
+    expected_repos_hint: [swc, babel, esbuild, oxc]
+    tags: [feature, medium]
+
+  - id: q040
+    query: "exponential backoff retry utility"
+    expected_categories: [developer_tooling, reliability]
+    expected_repos_hint: [tenacity, p-retry, backoff]
+    tags: [feature, easy]
+
+  - id: q041
+    query: "on device llm inference"
+    expected_categories: [llm_inference, edge_ai, mobile]
+    expected_repos_hint: [llama.cpp, mlc-llm, executorch]
+    tags: [trend, medium]
+
+  - id: q042
+    query: "ai agent memory persistence"
+    expected_categories: [ai_agents, llm_frameworks, memory_systems]
+    expected_repos_hint: [mem0, zep, letta]
+    tags: [trend, medium]
+
+  - id: q043
+    query: "mcp server for tool calling"
+    expected_categories: [ai_agents, mcp, llm_tooling]
+    tags: [trend, medium]
+
+  - id: q044
+    query: "tauri alternative desktop app framework"
+    expected_categories: [desktop, cross_platform]
+    expected_repos_hint: [tauri, wails, electron, neutralinojs]
+    tags: [trend, easy]
+
+  - id: q045
+    query: "webgpu compute shaders for ml"
+    expected_categories: [webgpu, ml_inference, browser]
+    expected_repos_hint: [transformers.js, onnxruntime-web, webllm]
+    tags: [trend, hard]
+
+  - id: q046
+    query: "browser based cad kernel"
+    expected_categories: [cad, 3d, frontend]
+    tags: [long_tail, hard]
+
+  - id: q047
+    query: "formal verification for smart contracts"
+    expected_categories: [blockchain, formal_verification]
+    tags: [long_tail, hard]
+
+  - id: q048
+    query: "bluetooth mesh networking library"
+    expected_categories: [iot, networking, embedded]
+    tags: [long_tail, hard]
+
+  - id: q049
+    query: "differential privacy library python"
+    expected_categories: [privacy, python, ml_training]
+    tags: [long_tail, hard]
+
+  - id: q050
+    query: "opencl to cuda transpiler"
+    expected_categories: [gpu, compilers, high_performance_computing]
+    tags: [long_tail, hard]
