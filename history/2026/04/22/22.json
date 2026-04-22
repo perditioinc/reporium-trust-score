@@ -1,0 +1,56 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": false,
+        "error": "Internal server error. Please try again.",
+        "first_token_ms": null,
+        "http_status": 200,
+        "probe": "what is a vector database",
+        "source_count": 0,
+        "sources_ms": null,
+        "total_ms": null,
+        "ttfb_ms": 194
+      },
+      {
+        "completed": false,
+        "error": "Internal server error. Please try again.",
+        "first_token_ms": null,
+        "http_status": 200,
+        "probe": "react alternatives for state management",
+        "source_count": 0,
+        "sources_ms": null,
+        "total_ms": null,
+        "ttfb_ms": 200
+      },
+      {
+        "completed": false,
+        "error": "Internal server error. Please try again.",
+        "first_token_ms": null,
+        "http_status": 200,
+        "probe": "python web framework for async apps",
+        "source_count": 0,
+        "sources_ms": null,
+        "total_ms": null,
+        "ttfb_ms": 190
+      }
+    ],
+    "ts": "2026-04-22T22:41:28.532549+00:00"
+  },
+  "health": {
+    "api_health_status": 503,
+    "api_health_ttfb_ms": 202,
+    "home_status": 200,
+    "home_ttfb_ms": 356,
+    "ts": "2026-04-22T22:40:57.790616+00:00"
+  },
+  "score": {
+    "composite": 70.0,
+    "error_rate": 1.0,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 1.0,
+    "reliability": 0.0
+  },
+  "ts": "2026-04-22T22:41:28.587425+00:00"
+}
