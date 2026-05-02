@@ -1,0 +1,53 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": true,
+        "first_token_ms": 223,
+        "http_status": 200,
+        "probe": "what is a vector database",
+        "source_count": 5,
+        "sources_ms": 223,
+        "total_ms": 273,
+        "ttfb_ms": 223
+      },
+      {
+        "completed": true,
+        "first_token_ms": 123,
+        "http_status": 200,
+        "probe": "react alternatives for state management",
+        "source_count": 3,
+        "sources_ms": 123,
+        "total_ms": 168,
+        "ttfb_ms": 123
+      },
+      {
+        "completed": true,
+        "first_token_ms": 97,
+        "http_status": 200,
+        "probe": "python web framework for async apps",
+        "source_count": 3,
+        "sources_ms": 96,
+        "total_ms": 153,
+        "ttfb_ms": 96
+      }
+    ],
+    "ts": "2026-05-02T05:30:34.632666+00:00"
+  },
+  "health": {
+    "api_health_status": 200,
+    "api_health_ttfb_ms": 89,
+    "home_status": 200,
+    "home_ttfb_ms": 478,
+    "ts": "2026-05-02T05:30:03.876958+00:00"
+  },
+  "score": {
+    "composite": 100.0,
+    "error_rate": 0.0,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 1.0,
+    "reliability": 1.0
+  },
+  "ts": "2026-05-02T05:30:34.690377+00:00"
+}
