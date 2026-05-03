@@ -1,0 +1,58 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": true,
+        "first_token_ms": 102,
+        "http_status": 200,
+        "probe": "what is a vector database",
+        "source_count": 5,
+        "sources_ms": 102,
+        "total_ms": 149,
+        "ttfb_ms": 102
+      },
+      {
+        "completed": true,
+        "first_token_ms": 695,
+        "http_status": 200,
+        "probe": "react alternatives for state management",
+        "source_count": 5,
+        "sources_ms": 231,
+        "total_ms": 3186,
+        "ttfb_ms": 231
+      },
+      {
+        "completed": true,
+        "first_token_ms": 163,
+        "http_status": 200,
+        "probe": "python web framework for async apps",
+        "source_count": 3,
+        "sources_ms": 163,
+        "total_ms": 219,
+        "ttfb_ms": 163
+      }
+    ],
+    "ts": "2026-05-03T18:48:40.707157+00:00"
+  },
+  "graph_quality": {
+    "available": false,
+    "error": "REPORIUM_ADMIN_KEY not set; skipping",
+    "ts": "2026-05-03T18:48:40.860667+00:00"
+  },
+  "health": {
+    "api_health_status": 200,
+    "api_health_ttfb_ms": 127,
+    "home_status": 200,
+    "home_ttfb_ms": 516,
+    "ts": "2026-05-03T18:48:06.995978+00:00"
+  },
+  "score": {
+    "composite": 65.0,
+    "error_rate": 0.0,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 0.0,
+    "reliability": 1.0
+  },
+  "ts": "2026-05-03T18:48:40.916278+00:00"
+}
