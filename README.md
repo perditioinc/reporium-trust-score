@@ -15,7 +15,7 @@ composite = 30*reliability + 35*quality + 20*integrity + 15*freshness
 All four terms are normalized to `[0, 1]` before weighting, so a perfect score
 is `100.0`.
 
-**Phase 1 status:** only `reliability` is measured. `quality`, `integrity`, and
+**Status:** `reliability` and `quality` are measured. `integrity` and
 `freshness` are hard-coded to `1.0` as placeholders and come online in later
 phases (see roadmap).
 
@@ -24,6 +24,12 @@ phases (see roadmap).
 - Home page (`https://www.reporium.com/`) returns 200
 - API health (`/health`) returns 200
 - Synthetic `ask/stream` probes complete cleanly (`{type: "done"}` received)
+
+`quality` (KAN-174) reads `/metrics/graph-quality` and weights each edge
+family (`DEPENDS_ON`, `ALTERNATIVE_TO`, `EXTENDS`, `COMPATIBLE_WITH`) by its
+`precision_proxy`. It hard-fails to `0.0` if ANY family drops below the
+KAN-147 precision floor of `0.7`, so the probe surfaces real graph
+regressions instead of riding flat at `1.0`.
 
 ## How it runs
 
@@ -39,7 +45,7 @@ Every hourly snapshot is a JSON file committed to `history/` in this repo.
 Public, diffable, time-stamped. No database, no blob store — the git log *is*
 the audit trail.
 
-## Secret required
+## Secrets required
 
 The synthetic-ask probe needs an app token. Kim must set it once:
 
@@ -52,6 +58,18 @@ gh secret set REPORIUM_APP_TOKEN \
 If unset, `probes/synthetic_ask.py` skips gracefully (each probe records
 `"error": "REPORIUM_APP_TOKEN not set; skipping"`) and `reliability` drops to 0
 until it's configured. **Never commit the token value.**
+
+The graph-quality probe needs the admin key for `/metrics/graph-quality`:
+
+```bash
+gh secret set REPORIUM_ADMIN_KEY \
+  --body "<admin-key>" \
+  --repo perditioinc/reporium-trust-score
+```
+
+If unset, `probes/graph_quality.py` returns `{"available": false, ...}` and
+the Quality sub-score drops to 0 (treated as a missing-signal regression,
+not a green pass).
 
 ## Roadmap
 
