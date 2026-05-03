@@ -39,6 +39,14 @@ jobs:
           python -m probes.synthetic_ask > ask.json
           cat ask.json
 
+      - name: Run graph-quality probe
+        id: graph_quality
+        env:
+          REPORIUM_ADMIN_KEY: ${{ secrets.REPORIUM_ADMIN_KEY }}
+        run: |
+          python -m probes.graph_quality > graph_quality.json
+          cat graph_quality.json
+
       - name: Compute score and save to history
         run: |
           python - <<'EOF'
@@ -50,12 +58,14 @@ jobs:
 
           health = json.loads(Path("health.json").read_text())
           ask = json.loads(Path("ask.json").read_text())
-          score = compute_trust_score(health, ask)
+          graph_quality = json.loads(Path("graph_quality.json").read_text())
+          score = compute_trust_score(health, ask, graph_quality)
           now = datetime.now(timezone.utc)
           payload = {
               "score": score,
               "health": health,
               "ask": ask,
+              "graph_quality": graph_quality,
               "ts": now.isoformat(),
           }
           path = save_to_history(payload, now)
