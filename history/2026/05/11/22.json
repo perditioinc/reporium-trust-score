@@ -3,36 +3,36 @@
     "probes": [
       {
         "completed": true,
-        "first_token_ms": 179,
+        "first_token_ms": 144,
         "http_status": 200,
         "probe": "what is a vector database",
         "source_count": 5,
-        "sources_ms": 179,
-        "total_ms": 237,
-        "ttfb_ms": 179
+        "sources_ms": 143,
+        "total_ms": 201,
+        "ttfb_ms": 143
       },
       {
         "completed": true,
-        "first_token_ms": 1049,
+        "first_token_ms": 897,
         "http_status": 200,
         "probe": "react alternatives for state management",
         "source_count": 5,
-        "sources_ms": 420,
-        "total_ms": 3132,
-        "ttfb_ms": 420
+        "sources_ms": 330,
+        "total_ms": 2990,
+        "ttfb_ms": 329
       },
       {
         "completed": true,
-        "first_token_ms": 143,
+        "first_token_ms": 140,
         "http_status": 200,
         "probe": "python web framework for async apps",
         "source_count": 3,
-        "sources_ms": 143,
-        "total_ms": 206,
-        "ttfb_ms": 143
+        "sources_ms": 140,
+        "total_ms": 198,
+        "ttfb_ms": 140
       }
     ],
-    "ts": "2026-05-11T22:00:03.579569+00:00"
+    "ts": "2026-05-11T22:59:11.649761+00:00"
   },
   "graph_quality": {
     "available": true,
@@ -72,7 +72,7 @@
         "recall_proxy": 0.2734
       }
     },
-    "generated_at": "2026-05-11T22:00:05.133043+00:00",
+    "generated_at": "2026-05-11T22:59:12.859082+00:00",
     "notes": [
       "DEPENDS_ON precision/recall is exact against the current repo_dependencies corpus.",
       "ALTERNATIVE_TO, COMPATIBLE_WITH, and EXTENDS use operational proxies rather than human-labeled ground truth."
@@ -88,14 +88,14 @@
       "repo_count": 1892,
       "total_edges": 54694
     },
-    "ts": "2026-05-11T22:00:03.739031+00:00"
+    "ts": "2026-05-11T22:59:11.802615+00:00"
   },
   "health": {
     "api_health_status": 200,
-    "api_health_ttfb_ms": 163,
+    "api_health_ttfb_ms": 133,
     "home_status": 200,
-    "home_ttfb_ms": 222,
-    "ts": "2026-05-11T21:59:29.843028+00:00"
+    "home_ttfb_ms": 257,
+    "ts": "2026-05-11T22:58:38.103215+00:00"
   },
   "score": {
     "composite": 65.0,
@@ -105,5 +105,5 @@
     "quality": 0.0,
     "reliability": 1.0
   },
-  "ts": "2026-05-11T22:00:05.247705+00:00"
+  "ts": "2026-05-11T22:59:12.970564+00:00"
 }
