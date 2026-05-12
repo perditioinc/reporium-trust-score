@@ -83,6 +83,32 @@ def test_quality_partial_when_one_family_dead():
     assert 0.0 < score < 1.0
 
 
+def test_quality_dead_family_with_null_precision_does_not_hard_fail():
+    """COMPATIBLE_WITH (and other proxy families) routinely emit
+    `precision_proxy: null` when `live_edges=0`. Previously this null
+    coerced to 0.0 which tripped the precision floor and hard-failed the
+    whole composite (production regression observed 2026-05-12: composite
+    dragged to 65 even with 3/4 live families above floor). The fix
+    short-circuits on `live_edges == 0` BEFORE the floor check.
+    """
+    metrics = _all_healthy_graph_quality()
+    # Live-shape COMPATIBLE_WITH from production: 0 edges, null precision.
+    metrics["edge_types"]["COMPATIBLE_WITH"] = {
+        "live_edges": 0,
+        "eligible_repos": 0,
+        "observed_repos": 0,
+        "precision_proxy": None,
+        "recall_proxy": None,
+        "invalid_live_edges": 0,
+    }
+    score = quality_subscore(metrics)
+    # _all_healthy_graph_quality fixture sets ALT=0.95, EXT=0.9, DEP=0.85.
+    # Dead COMPATIBLE_WITH contributes 0.
+    expected = (1.0 + 0.95 + 0.9 + 0.0) / 4
+    assert score == expected
+    assert score > 0.0  # MUST not hard-fail
+
+
 def test_quality_zero_when_metrics_missing():
     """A failed probe (available=False) is treated as regression, not green pass."""
     assert quality_subscore({"available": False, "error": "boom"}) == 0.0
