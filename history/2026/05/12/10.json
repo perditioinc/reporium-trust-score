@@ -3,47 +3,47 @@
     "probes": [
       {
         "completed": true,
-        "first_token_ms": 147,
+        "first_token_ms": 764,
         "http_status": 200,
         "probe": "what is a vector database",
         "source_count": 5,
-        "sources_ms": 147,
-        "total_ms": 196,
-        "ttfb_ms": 147
+        "sources_ms": 764,
+        "total_ms": 818,
+        "ttfb_ms": 764
       },
       {
         "completed": true,
-        "first_token_ms": 1025,
+        "first_token_ms": 2533,
         "http_status": 200,
         "probe": "react alternatives for state management",
         "source_count": 5,
-        "sources_ms": 378,
-        "total_ms": 3167,
-        "ttfb_ms": 378
+        "sources_ms": 1939,
+        "total_ms": 4720,
+        "ttfb_ms": 1939
       },
       {
         "completed": true,
-        "first_token_ms": 125,
+        "first_token_ms": 771,
         "http_status": 200,
         "probe": "python web framework for async apps",
         "source_count": 3,
-        "sources_ms": 125,
-        "total_ms": 192,
-        "ttfb_ms": 125
+        "sources_ms": 771,
+        "total_ms": 827,
+        "ttfb_ms": 771
       }
     ],
-    "ts": "2026-05-12T10:26:13.040281+00:00"
+    "ts": "2026-05-12T10:49:01.879092+00:00"
   },
   "graph_quality": {
     "available": true,
     "edge_types": {
       "ALTERNATIVE_TO": {
         "eligible_repos": 1884,
-        "invalid_live_edges": 19217,
-        "live_edges": 50853,
-        "observed_repos": 1855,
-        "precision_proxy": 0.6221,
-        "recall_proxy": 0.9846
+        "invalid_live_edges": 1473,
+        "live_edges": 50013,
+        "observed_repos": 1884,
+        "precision_proxy": 0.9705,
+        "recall_proxy": 1.0
       },
       "COMPATIBLE_WITH": {
         "eligible_repos": 0,
@@ -66,13 +66,13 @@
       "EXTENDS": {
         "eligible_repos": 1870,
         "invalid_live_edges": 0,
-        "live_edges": 1704,
-        "observed_repos": 512,
+        "live_edges": 1716,
+        "observed_repos": 513,
         "precision_proxy": 1.0,
-        "recall_proxy": 0.2738
+        "recall_proxy": 0.2743
       }
     },
-    "generated_at": "2026-05-12T10:26:13.976660+00:00",
+    "generated_at": "2026-05-12T10:49:02.892260+00:00",
     "notes": [
       "DEPENDS_ON precision/recall is exact against the current repo_dependencies corpus.",
       "ALTERNATIVE_TO, COMPATIBLE_WITH, and EXTENDS use operational proxies rather than human-labeled ground truth."
@@ -86,16 +86,16 @@
         "SIMILAR_TO"
       ],
       "repo_count": 1892,
-      "total_edges": 54694
+      "total_edges": 53866
     },
-    "ts": "2026-05-12T10:26:13.198122+00:00"
+    "ts": "2026-05-12T10:49:02.036300+00:00"
   },
   "health": {
     "api_health_status": 200,
-    "api_health_ttfb_ms": 116,
+    "api_health_ttfb_ms": 134,
     "home_status": 200,
-    "home_ttfb_ms": 282,
-    "ts": "2026-05-12T10:25:39.323010+00:00"
+    "home_ttfb_ms": 431,
+    "ts": "2026-05-12T10:48:25.352158+00:00"
   },
   "score": {
     "composite": 65.0,
@@ -105,5 +105,5 @@
     "quality": 0.0,
     "reliability": 1.0
   },
-  "ts": "2026-05-12T10:26:14.093328+00:00"
+  "ts": "2026-05-12T10:49:03.000016+00:00"
 }
