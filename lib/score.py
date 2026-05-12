@@ -41,22 +41,41 @@ def quality_subscore(graph_quality_metrics: dict | None) -> float:
 
     weighted_scores: list[float] = []
     for et in EDGE_TYPES:
-        info = edge_types.get(et) or {}
+        # Schema regression — family expected but missing from the API
+        # response. Hard-fail so a future API change doesn't silently
+        # green-light the composite.
+        if et not in edge_types:
+            return 0.0
+
+        info = edge_types[et] or {}
+        live_edges = int(info.get("live_edges", 0) or 0)
+
+        # Dead family (present in response but no live edges) contributes
+        # 0 -- "partial-coverage regression, not a hard fail." Per-family
+        # precision is undefined for a 0-edge family (the API emits
+        # `precision_proxy: null`), so we MUST short-circuit here BEFORE
+        # the floor check below. Previously, `precision_proxy=null`
+        # coerced through `float(...) if not None else 0.0` to 0.0, which
+        # then tripped `precision < PRECISION_FLOOR` and hard-failed the
+        # whole composite. Real regression observed 2026-05-12 when
+        # COMPATIBLE_WITH (live_edges=0) dragged composite to 65 even
+        # though all three live families were above floor.
+        if live_edges == 0:
+            weighted_scores.append(0.0)
+            continue
+
         # DEPENDS_ON exposes "precision" (exact); the proxies expose
         # "precision_proxy". Treat them interchangeably.
         precision = info.get("precision")
         if precision is None:
             precision = info.get("precision_proxy")
         precision = float(precision) if precision is not None else 0.0
-        live_edges = int(info.get("live_edges", 0) or 0)
 
-        # Hard-fail composite when any family falls below the KAN-147 floor.
+        # Hard-fail composite when a LIVE family falls below the KAN-147 floor.
         if precision < PRECISION_FLOOR:
             return 0.0
 
-        # Dead family (no live edges) contributes 0 -- partial-coverage
-        # regression, not a hard fail.
-        weighted_scores.append(precision if live_edges > 0 else 0.0)
+        weighted_scores.append(precision)
 
     return sum(weighted_scores) / len(EDGE_TYPES)
 
