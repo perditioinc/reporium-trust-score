@@ -1,0 +1,109 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": true,
+        "first_token_ms": 8815,
+        "http_status": 200,
+        "probe": "what is a vector database",
+        "source_count": 5,
+        "sources_ms": 8815,
+        "total_ms": 8888,
+        "ttfb_ms": 8815
+      },
+      {
+        "completed": true,
+        "first_token_ms": 10842,
+        "http_status": 200,
+        "probe": "react alternatives for state management",
+        "source_count": 5,
+        "sources_ms": 10210,
+        "total_ms": 13711,
+        "ttfb_ms": 10210
+      },
+      {
+        "completed": true,
+        "first_token_ms": 1712,
+        "http_status": 200,
+        "probe": "python web framework for async apps",
+        "source_count": 3,
+        "sources_ms": 1712,
+        "total_ms": 1789,
+        "ttfb_ms": 1711
+      }
+    ],
+    "ts": "2026-05-18T15:16:24.249762+00:00"
+  },
+  "graph_quality": {
+    "available": true,
+    "edge_types": {
+      "ALTERNATIVE_TO": {
+        "eligible_repos": 1911,
+        "invalid_live_edges": 1473,
+        "live_edges": 50013,
+        "observed_repos": 1884,
+        "precision_proxy": 0.9705,
+        "recall_proxy": 0.9859
+      },
+      "COMPATIBLE_WITH": {
+        "eligible_repos": 0,
+        "invalid_live_edges": 0,
+        "live_edges": 0,
+        "observed_repos": 0,
+        "precision_proxy": null,
+        "recall_proxy": null
+      },
+      "DEPENDS_ON": {
+        "candidate_edges": 89,
+        "live_edges": 89,
+        "matched_edges": 89,
+        "missing_live_edges": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "source_coverage_recall": 1.0,
+        "unexpected_live_edges": 0
+      },
+      "EXTENDS": {
+        "eligible_repos": 1900,
+        "invalid_live_edges": 0,
+        "live_edges": 1718,
+        "observed_repos": 517,
+        "precision_proxy": 1.0,
+        "recall_proxy": 0.2721
+      }
+    },
+    "generated_at": "2026-05-18T15:16:43.704885+00:00",
+    "notes": [
+      "DEPENDS_ON precision/recall is exact against the current repo_dependencies corpus.",
+      "ALTERNATIVE_TO, COMPATIBLE_WITH, and EXTENDS use operational proxies rather than human-labeled ground truth."
+    ],
+    "source": "postgres_live",
+    "summary": {
+      "edge_types_present": [
+        "ALTERNATIVE_TO",
+        "DEPENDS_ON",
+        "EXTENDS",
+        "SIMILAR_TO"
+      ],
+      "repo_count": 1920,
+      "total_edges": 53868
+    },
+    "ts": "2026-05-18T15:16:24.408507+00:00"
+  },
+  "health": {
+    "api_health_status": 200,
+    "api_health_ttfb_ms": 613,
+    "home_status": 200,
+    "home_ttfb_ms": 308,
+    "ts": "2026-05-18T15:15:29.696452+00:00"
+  },
+  "score": {
+    "composite": 91.0,
+    "error_rate": 0.0,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 0.743,
+    "reliability": 1.0
+  },
+  "ts": "2026-05-18T15:16:43.824343+00:00"
+}
