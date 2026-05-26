@@ -1,0 +1,53 @@
+{
+  "ask": {
+    "probes": [
+      {
+        "completed": true,
+        "first_token_ms": 177,
+        "http_status": 200,
+        "probe": "what is a vector database",
+        "source_count": 5,
+        "sources_ms": 177,
+        "total_ms": 221,
+        "ttfb_ms": 176
+      },
+      {
+        "completed": true,
+        "first_token_ms": 1565,
+        "http_status": 200,
+        "probe": "react alternatives for state management",
+        "source_count": 5,
+        "sources_ms": 981,
+        "total_ms": 3788,
+        "ttfb_ms": 981
+      },
+      {
+        "completed": false,
+        "error": "HTTPSConnectionPool(host='reporium-api-573778300586.us-central1.run.app', port=443): Read timed out. (read timeout=60)",
+        "probe": "python web framework for async apps"
+      }
+    ],
+    "ts": "2026-05-26T20:01:07.147324+00:00"
+  },
+  "graph_quality": {
+    "available": false,
+    "error": "HTTPSConnectionPool(host='reporium-api-573778300586.us-central1.run.app', port=443): Read timed out. (read timeout=30)",
+    "ts": "2026-05-26T20:01:07.312476+00:00"
+  },
+  "health": {
+    "api_health_status": 200,
+    "api_health_ttfb_ms": 99,
+    "home_status": 200,
+    "home_ttfb_ms": 209,
+    "ts": "2026-05-26T19:59:32.877792+00:00"
+  },
+  "score": {
+    "composite": 55.0,
+    "error_rate": 0.333,
+    "freshness": 1.0,
+    "integrity": 1.0,
+    "quality": 0.0,
+    "reliability": 0.667
+  },
+  "ts": "2026-05-26T20:01:37.423936+00:00"
+}
