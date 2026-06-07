@@ -15,9 +15,14 @@ from datetime import datetime, timezone
 
 import requests
 
-GRAPH_QUALITY_URL = (
-    "https://reporium-api-573778300586.us-central1.run.app/metrics/graph-quality"
-)
+# Default points at the live production API (unchanged behavior). The
+# REPORIUM_API_BASE override lets the local OSS smoke harness (see local/)
+# aim the probe at a contract stub backed by a local Postgres. See
+# local/README.md.
+_API_BASE = os.environ.get(
+    "REPORIUM_API_BASE", "https://reporium-api-573778300586.us-central1.run.app"
+).rstrip("/")
+GRAPH_QUALITY_URL = f"{_API_BASE}/metrics/graph-quality"
 TIMEOUT = 30
 
 

@@ -8,9 +8,17 @@ from datetime import datetime, timezone
 
 import requests
 
-ASK_URL = "https://reporium-api-573778300586.us-central1.run.app/intelligence/ask/stream"
+# Default points at the live production API (unchanged behavior). The
+# REPORIUM_API_BASE override lets the local OSS smoke harness (see local/)
+# aim the probe at a contract stub. See local/README.md.
+_API_BASE = os.environ.get(
+    "REPORIUM_API_BASE", "https://reporium-api-573778300586.us-central1.run.app"
+).rstrip("/")
+ASK_URL = f"{_API_BASE}/intelligence/ask/stream"
 TIMEOUT = 60
-RATE_LIMIT_SLEEP_S = 15
+# Inter-query courtesy sleep against the live API. Overridable (default 15s
+# unchanged) so the local OSS smoke harness can set it to 0. See local/.
+RATE_LIMIT_SLEEP_S = float(os.environ.get("REPORIUM_ASK_SLEEP_S", "15"))
 
 CANARY_QUERIES = [
     "what is a vector database",
