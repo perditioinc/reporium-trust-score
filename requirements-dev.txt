@@ -1,0 +1,4 @@
+# Development / CI dependencies (test suite only).
+# Runtime deps live in requirements.txt.
+-r requirements.txt
+pytest>=8.0
