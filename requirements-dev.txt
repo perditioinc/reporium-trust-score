@@ -1,0 +1,4 @@
+# Development / CI dependencies (test suite). Production runtime deps live in
+# requirements.txt; keep this file out of the hourly probe image.
+-r requirements.txt
+pytest>=8.0

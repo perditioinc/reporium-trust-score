@@ -1,0 +1,37 @@
+name: Tests
+
+# The test suite never ran in CI before this workflow: the only other workflow
+# (hourly.yml) just executes the live probes on a schedule. This runs the
+# offline pytest suite on every push and pull request so score-logic
+# regressions (KAN-174 Quality sub-score, reliability gating, the dead-family
+# composite fix) are caught before merge.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest tests/ -q
