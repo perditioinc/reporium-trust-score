@@ -1,0 +1,44 @@
+# Local OSS dev substrate for reporium-trust-score.
+#
+# Brings up free, self-hosted substitutes for every Reporium cloud dependency
+# the hourly trust probes consume, so the trust-score computation path can be
+# exercised end to end with no cloud, no secrets, and no paid model.
+#
+# Cloud -> OSS substitution map:
+#   Postgres-backed /metrics/graph-quality  -> `db` (postgres:16-alpine) + seed
+#   Cloud Run reporium-api + home + ask LLM -> `stub` (stdlib contract server)
+#
+# $0 / OSS only. ADDITIVE and local only -- never points at production.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: reporium
+      POSTGRES_PASSWORD: reporium
+      POSTGRES_DB: reporium
+    # Seed runs once on first init of an empty data dir.
+    volumes:
+      - ./seed:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reporium -d reporium"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  stub:
+    build:
+      context: ./stub
+    environment:
+      STUB_PORT: "8080"
+      DATABASE_URL: "postgresql://reporium:reporium@db:5432/reporium"
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8080/health')\""]
+      interval: 3s
+      timeout: 3s
+      retries: 20

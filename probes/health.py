@@ -2,13 +2,21 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from datetime import datetime, timezone
 
 import requests
 
-HOME_URL = "https://www.reporium.com/"
-API_HEALTH_URL = "https://reporium-api-573778300586.us-central1.run.app/health"
+# Defaults point at the live production system (unchanged behavior). The
+# REPORIUM_HOME_URL / REPORIUM_API_BASE overrides let the local OSS smoke
+# harness (see local/) aim the probe at a contract stub instead. See
+# local/README.md for the env-pointing rationale.
+HOME_URL = os.environ.get("REPORIUM_HOME_URL", "https://www.reporium.com/")
+_API_BASE = os.environ.get(
+    "REPORIUM_API_BASE", "https://reporium-api-573778300586.us-central1.run.app"
+).rstrip("/")
+API_HEALTH_URL = f"{_API_BASE}/health"
 TIMEOUT = 10
 
 
